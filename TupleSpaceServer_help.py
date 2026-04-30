@@ -57,16 +57,17 @@ def print_stats():
             print(f"[PERORT]tuples={tuple_count} avg_tuple={avg_tuple_size:2f} avg_val={avg_value_size:.2f} avg_key={avg_key_size:2f} clients={total_clients} total_ops={total_operations} read={read_count} get={get_count} put={put_count} errors={error_count}")
 
 def handle_client(client_socket):
-    global tuple_space
-
     increment_stat("total_clients")
     try:
         while True:
             # TASK 1: Read the first 3 bytes to get the message size, then read
             # the remaining (size - 3) bytes and decode to a string.
             # Hint: use receive_n(). If nothing arrives, client disconnected — break.
-
-
+            size_bytes=receive_n(client_socket,3)
+            if not size_bytes:
+                break
+            msg_len=int(size_bytes.decode())
+            message_buffer=receive_n(client_socket,msg_len-3).decode()
             # Handle the request
             response = handle_request(message_buffer)
 
