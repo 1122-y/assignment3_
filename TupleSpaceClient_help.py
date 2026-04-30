@@ -69,11 +69,14 @@ def main():
             # - Send:    sock.sendall(message.encode())
             # - Receive: first read 3 bytes to get the response size (like the server does).
             #            Then read the remaining (size - 3) bytes to get the response body.
-
-
-            response = response_buffer.decode().strip()
-            print(f"{line}: {response}")
-
+            sock.sendall(message.encode())
+            size_data=sock.recv(3)
+            if not size_data:
+                break
+            resp_size=int(size_data.decode())
+            resp_body=sock.recv(resp_size-3).decode()
+            response=(size_data+resp_body.encode().decode.strip())
+            print(f"{line}:{response}")
     except (socket.error, ValueError) as e:
         print(f"Error: {e}")
         sys.exit(1)
