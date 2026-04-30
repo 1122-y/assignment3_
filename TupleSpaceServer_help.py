@@ -120,14 +120,21 @@ def handle_request(message):
                 return f"OK({key},{val})removed"
             else:return (f"ERR{key}does not exist")
         elif op == "P":
-            if len(parts) < 3:
-                increment_stat("error_count")
-                return "ERR Invalid PUT"
-            value = parts[2]
+
+
             # TASK 5: PUT — add (key, value) only if key does not already exist.
             # Validate: len(value) <= 999 and len(key + " " + value) <= 970.
             # Return "OK (<key>, <value>) added" or "ERR <key> already exists".
             increment_stat("put_count")
+            if len(parts) < 3:
+                increment_stat("error_count")
+                return "ERR Invalid PUT"
+            value = parts[2]
+            if len(value)>999:
+                increment_stat("error_count")
+                return"ERR value too long"
+            if key in tuple_space:
+                return f"OK({key},{value})added"
 
 
         else:

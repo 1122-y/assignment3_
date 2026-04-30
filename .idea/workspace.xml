@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1dffe16-1227-4b0c-8eba-2ee2bed8c79e" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TupleSpaceServer_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/TupleSpaceServer_help.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +56,7 @@
       <workItem from="1777526328897" duration="128000" />
       <workItem from="1777526467058" duration="22000" />
       <workItem from="1777526733425" duration="1012000" />
-      <workItem from="1777538292196" duration="3455000" />
+      <workItem from="1777538292196" duration="4517000" />
     </task>
     <servers />
   </component>
