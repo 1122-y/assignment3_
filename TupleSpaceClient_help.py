@@ -84,6 +84,6 @@ def main():
         # TASK 4: Close the socket when done (already called for you — explain why
         # finally: is the right place to do this even if an error occurs above).
         sock.close()
-
+#Whether there is an exception or not, the finally block will always execute to ensure resource release and prevent port occupation.
 if __name__ == "__main__":
     main()
