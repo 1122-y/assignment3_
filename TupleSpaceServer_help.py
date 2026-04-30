@@ -105,9 +105,11 @@ def handle_request(message):
         if op == "R":
             # TASK 3: READ — look up key in tuple_space.
             # Return "OK (<key>, <value>) read" or "ERR <key> does not exist".
-            increment_stat("read_count")
-
-
+            if key in tuple_space:
+                val=tuple_space[key]
+                return f"OK({key},{val})read"
+            else:
+                return f"ERR{key}does not exist"
         elif op == "G":
             # TASK 4: GET — remove key from tuple_space and return its value.
             # Return "OK (<key>, <value>) removed" or "ERR <key> does not exist".
